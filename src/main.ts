@@ -20,111 +20,35 @@ interface EssayItem {
 
 const PORTFOLIOS: PortfolioItem[] = [
   {
-    id: 'architectural',
-    index: '01 / 10',
-    title: 'Architectural',
-    src: '/src/assets/images/portfolio_architectural_1795541787299.jpg',
-    camera: '24mm Tilt-Shift · f/11 · ISO 100',
-    description:
-      'Perspective-corrected exterior and interior architectural studies balancing structural geometry with natural daylight.',
-    notes: 'Shot at golden hour to preserve warm travertine relief while retaining deep interior shadow detail.',
-  },
-  {
     id: 'food-restaurant',
-    index: '02 / 10',
-    title: 'Food and Restaurant',
-    src: '/src/assets/images/portfolio_food_restaurant_1795541787397.jpg',
+    index: '01 / 03',
+    title: 'Food & Restaurants',
+    src: '/assets/aistudio/Rectangle_1__2__64708c3b.png',
     camera: '85mm · f/2.8 · ISO 400',
     description:
       'Atmospheric dining spaces and tactile culinary plating styled for hospitality brands, menus, and editorial features.',
-    notes: 'Single diffused overhead key light balanced against warm ambient dining room practicals.',
-  },
-  {
-    id: 'fashion',
-    index: '03 / 10',
-    title: 'Fashion',
-    src: '/src/assets/images/portfolio_fashion_1795541788327.jpg',
-    camera: '70-200mm · f/2.8 · ISO 200',
-    description:
-      'Editorial wardrobe storytelling and movement-driven fashion commissions directed on location and in studio.',
-    notes: 'Open colonnade sidelight shaped with a silver reflector to accentuate tailored fabric drape.',
-    objectPosition: '50% 20%',
-  },
-  {
-    id: 'swimwear',
-    index: '04 / 10',
-    title: 'Swimwear',
-    src: '/src/assets/images/portfolio_swimwear_1795541787628.jpg',
-    camera: '50mm · f/4 · ISO 160',
-    description:
-      'Sun-drenched coastal and resort swimwear productions blending natural reflection with controlled fill lighting.',
-    notes: 'High-speed sync strobe fill matched to late afternoon coastal horizon light.',
-    objectPosition: '50% 20%',
-  },
-  {
-    id: 'boudoir',
-    index: '05 / 10',
-    title: 'Boudoir',
-    src: '/src/assets/images/portfolio_boudoir_1795541788139.jpg',
-    camera: '50mm · f/2 · ISO 200',
-    description:
-      'Sculpted-light intimate portraiture focused on quiet confidence, graceful posing, and refined tonal contrast.',
-    notes: 'Sheer north-facing window diffusion paired with classic monochrome silver-gelatin tonal grading.',
-    objectPosition: '50% 20%',
-  },
-  {
-    id: 'corporate-headshots',
-    index: '06 / 10',
-    title: 'Corporate Headshots',
-    src: '/src/assets/images/portfolio_corporate_headshots_1795541788498.jpg',
-    camera: '105mm · f/3.2 · ISO 250',
-    description:
-      'Polished executive and leadership portraits crafted for annual reports, press releases, and corporate teams.',
-    notes: 'Portable feathered octa-box keyed at 45 degrees inside an architectural atrium.',
-    objectPosition: '50% 20%',
-  },
-  {
-    id: 'actor-headshots',
-    index: '07 / 10',
-    title: 'Actor Headshots',
-    src: '/src/assets/images/portfolio_actor_headshots_1795541789467.jpg',
-    camera: '85mm · f/2 · ISO 160',
-    description:
-      'Expressive theatrical and film casting portraits centered on authentic eye-line, presence, and character range.',
-    notes: 'Clamshell fill under a gridded beauty dish to keep catchlights crisp and skin texture honest.',
-    objectPosition: '50% 20%',
+    notes: 'Single diffused key light shaped to bring out glaze, seared texture, and table glassware.',
   },
   {
     id: 'model-headshots',
-    index: '08 / 10',
+    index: '02 / 03',
     title: 'Model Headshots',
-    src: '/src/assets/images/portfolio_model_headshots_1795541790356.jpg',
+    src: '/assets/aistudio/Rectangle_5_866494e3.png',
     camera: '90mm Macro · f/5.6 · ISO 100',
     description:
       'Clean beauty and agency-ready comp card portraits highlighting natural skin texture, symmetry, and poise.',
-    notes: 'Neutral stone backdrop with wrap-around softbox lighting for agency-standard comp cards.',
+    notes: 'Studio and natural-light agency portraits tailored for model comp cards and editorial casting.',
     objectPosition: '50% 20%',
   },
   {
-    id: 'medical',
-    index: '09 / 10',
-    title: 'Medical',
-    src: '/src/assets/images/portfolio_medical_1795541793067.jpg',
-    camera: '35mm · f/2.8 · ISO 500',
+    id: 'architectural',
+    index: '03 / 03',
+    title: 'Architectural',
+    src: '/assets/aistudio/Rectangle_16_8022c14b.png',
+    camera: '24mm Tilt-Shift · f/11 · ISO 100',
     description:
-      'Authentic healthcare, clinical environment, and physician-patient storytelling for hospitals and medical practices.',
-    notes: 'Color-calibrated daylight LED panel mixed smoothly with clinical ambient illumination.',
-    objectPosition: '50% 25%',
-  },
-  {
-    id: 'products',
-    index: '10 / 10',
-    title: 'Products',
-    src: '/src/assets/images/portfolio_products_1795541791489.jpg',
-    camera: '100mm · f/8 · ISO 100',
-    description:
-      'Precision-lit studio still life and commercial product photography tailored for campaigns, packaging, and lookbooks.',
-    notes: 'Hard sunlight replica modifier casting crisp shadows across natural travertine stone.',
+      'Perspective-corrected exterior and interior architectural studies balancing structural geometry with natural daylight.',
+    notes: 'Architectural interior series capturing warm woodwork, reception geometry, and spiral staircase detail.',
   },
 ];
 
@@ -313,54 +237,15 @@ const ESSAYS: Record<string, EssayItem> = {
     });
   }
 
-  // 5. Interactive Portfolio Category Filtering
-  const filterButtons = Array.from(document.querySelectorAll<HTMLButtonElement>('#portfolioFilterBar .filter-tab'));
-  const allProjCards = Array.from(document.querySelectorAll<HTMLElement>('#workStack .proj'));
-  const filterStatus = document.getElementById('filterStatus');
-  let visibleProjCards: HTMLElement[] = [...allProjCards];
-
-  function applyPortfolioFilter(filter: string) {
-    filterButtons.forEach((btn) => {
-      btn.setAttribute('aria-pressed', btn.dataset.filter === filter ? 'true' : 'false');
-    });
-
-    visibleProjCards = [];
-    allProjCards.forEach((card) => {
-      const matches = filter === 'all' || card.dataset.project === filter;
-      card.style.display = matches ? '' : 'none';
-      if (matches) {
-        visibleProjCards.push(card);
-      } else {
-        card.style.transform = '';
-        card.style.filter = '';
-      }
-    });
-
-    if (filterStatus) {
-      if (filter === 'all') {
-        filterStatus.textContent =
-          'Viewing all 10 portfolio specialties by David Blecman / Positive Negatives. Select a discipline above or click any portfolio card below to inspect.';
-      } else {
-        const match = PORTFOLIOS.find((p) => p.id === filter);
-        filterStatus.textContent = match
-          ? `Showing ${match.title} (${match.index}) — click the series card below to inspect in full resolution.`
-          : 'Viewing selected portfolio.';
-      }
-    }
-  }
-
-  filterButtons.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      applyPortfolioFilter(btn.dataset.filter || 'all');
-    });
-  });
-
+  // 5. Scroll to Portfolio Category Section
   document.querySelectorAll<HTMLElement>('[data-jump-filter]').forEach((el) => {
     el.addEventListener('click', () => {
-      const targetFilter = el.dataset.jumpFilter || 'all';
-      applyPortfolioFilter(targetFilter);
-      const workSection = document.getElementById('work');
-      workSection?.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
+      const targetFilter = el.dataset.jumpFilter || '';
+      const projectEl = targetFilter
+        ? document.querySelector<HTMLElement>(`#portfolioStripList [data-project="${targetFilter}"]`)
+        : null;
+      const targetSection = projectEl || document.getElementById('work');
+      targetSection?.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
     });
   });
 
@@ -378,12 +263,12 @@ const ESSAYS: Record<string, EssayItem> = {
   let activeLightboxIdx = 0;
   let lastFocusedEl: HTMLElement | null = null;
 
-  function renderLightbox(idx: number) {
+  function renderLightbox(idx: number, srcOverride?: string) {
     activeLightboxIdx = (idx + PORTFOLIOS.length) % PORTFOLIOS.length;
     const item = PORTFOLIOS[activeLightboxIdx];
     if (lightboxImg) {
       lightboxImg.style.opacity = '1';
-      lightboxImg.src = item.src;
+      lightboxImg.src = srcOverride || item.src;
       lightboxImg.alt = `${item.title} portfolio photograph`;
       lightboxImg.style.objectPosition = item.objectPosition || '50% 50%';
     }
@@ -394,11 +279,11 @@ const ESSAYS: Record<string, EssayItem> = {
     if (lightboxCamera) lightboxCamera.textContent = item.camera;
   }
 
-  function openLightbox(id: string) {
+  function openLightbox(id: string, srcOverride?: string) {
     if (!lightboxModal) return;
     lastFocusedEl = document.activeElement as HTMLElement | null;
     const foundIdx = PORTFOLIOS.findIndex((p) => p.id === id);
-    renderLightbox(foundIdx >= 0 ? foundIdx : 0);
+    renderLightbox(foundIdx >= 0 ? foundIdx : 0, srcOverride);
     lightboxModal.classList.add('open');
     lightboxModal.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
@@ -415,14 +300,18 @@ const ESSAYS: Record<string, EssayItem> = {
 
   document.querySelectorAll<HTMLElement>('[data-lightbox-id]').forEach((trigger) => {
     trigger.addEventListener('click', () => {
-      const id = trigger.dataset.lightboxId || 'architectural';
-      openLightbox(id);
+      const id = trigger.dataset.lightboxId || 'food-restaurant';
+      const srcOverride = trigger.dataset.lightboxSrc;
+      openLightbox(id, srcOverride);
     });
     if (trigger.getAttribute('role') === 'button') {
       trigger.addEventListener('keydown', (e: KeyboardEvent) => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
-          openLightbox(trigger.dataset.lightboxId || 'architectural');
+          openLightbox(
+            trigger.dataset.lightboxId || 'food-restaurant',
+            trigger.dataset.lightboxSrc
+          );
         }
       });
     }
@@ -662,21 +551,6 @@ const ESSAYS: Record<string, EssayItem> = {
         const ix = (1 - eased) * 14;
         const rad = (1 - eased) * 10;
         w.style.clipPath = `inset(${iy.toFixed(2)}% ${ix.toFixed(2)}% ${iy.toFixed(2)}% ${ix.toFixed(2)}% round ${rad.toFixed(1)}px)`;
-      }
-
-      // Sticky Work Stack scale (0.93) & brightness (0.65)
-      for (let i = 0; i < visibleProjCards.length; i++) {
-        const card = visibleProjCards[i];
-        const next = visibleProjCards[i + 1];
-        if (!next) {
-          card.style.transform = '';
-          card.style.filter = '';
-          continue;
-        }
-        const nr = next.getBoundingClientRect();
-        const p = clamp((vh - nr.top) / Math.max(1, vh - 96), 0, 1);
-        card.style.transform = p ? `scale(${(1 - 0.07 * p).toFixed(4)})` : '';
-        card.style.filter = p ? `brightness(${(1 - 0.35 * p).toFixed(3)})` : '';
       }
 
       // Results Band clip-path expansion (28px -> 0)
